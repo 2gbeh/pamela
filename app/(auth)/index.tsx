@@ -1,5 +1,6 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
-import Feather from '@expo/vector-icons/Feather';
+import { router } from "expo-router";
+import Feather from "@expo/vector-icons/Feather";
 import { snackbar } from "@/lib/snackbar";
 
 const themeColorOld = "#151718";
@@ -7,7 +8,10 @@ const themeColor = "#000014";
 
 export default function LoginScreen() {
   console.log("🚀 ~ LoginScreen");
-  const handleToast = () => snackbar.toast("What's up!");
+  const handleToast = () => {
+    snackbar.toast("What's up!");
+    // router.push("/create");
+  };
   // renders
   return (
     <View style={s.container}>
