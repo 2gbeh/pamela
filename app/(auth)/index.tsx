@@ -1,5 +1,8 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import { snackbar } from "@/lib/snackbar";
+
+const themeColor = "#151718";
 
 export default function LoginScreen() {
   console.log("🚀 ~ LoginScreen");
@@ -8,7 +11,8 @@ export default function LoginScreen() {
   return (
     <View style={s.container}>
       <Pressable style={s.button} onPress={handleToast}>
-        <Text style={s.button_text}>Press these nutts</Text>
+        <Text style={s.button_text}>Press These Nutts</Text>
+        <AntDesign name="arrowright" size={24} color={themeColor} />
       </Pressable>
     </View>
   );
@@ -16,18 +20,24 @@ export default function LoginScreen() {
 
 export const s = StyleSheet.create({
   container: {
-    backgroundColor: "black",
+    backgroundColor: themeColor,
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
   button: {
-    backgroundColor: "teal",
-    borderRadius: 4,
-    paddingHorizontal: 20,
-    height: 40,
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    columnGap: 10,
   },
-  button_text: { color: "white", fontWeight: "500" },
+  button_text: {
+    color: themeColor,
+    fontSize: 18,
+    fontWeight: "600",
+  },
 });
