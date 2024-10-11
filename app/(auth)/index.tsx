@@ -1,48 +1,55 @@
-import { Pressable, View, Text, StyleSheet } from "react-native";
-import { router } from "expo-router";
-import Feather from "@expo/vector-icons/Feather";
-import { snackbar } from "@/lib/snackbar";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { COLOR } from "@/constants/THEME";
 
-const themeColorOld = "#151718";
-const themeColor = "#000014";
+import {
+  AppBar,
+  SearchBar,
+  FAB,
+  Filters,
+  FormSheet,
+  ListItem,
+} from "@/features/post";
 
-export default function LoginScreen() {
-  console.log("🚀 ~ LoginScreen");
-  const handleToast = () => {
-    snackbar.toast("What's up!");
-    // router.push("/create");
-  };
-  // renders
+export default function PostsScreen() {
+  console.log("🚀 ~ PostsScreen");
   return (
-    <View style={s.container}>
-      <Pressable style={s.button} onPress={handleToast}>
-        <Text style={s.button_text}>Toast These Nutts</Text>
-        <Feather name="arrow-right" size={24} color={themeColor} />
-      </Pressable>
-    </View>
+    <SafeAreaView style={s.container}>
+      <View style={s.header}>
+        <AppBar />
+        <SearchBar />
+        <Filters total={16} />
+      </View>
+      <ScrollView>
+        <View style={s.main}>
+          {Array.from({ length: 10 }).map((_, i) => {
+            return (
+              <ListItem
+                key={i}
+                title="Prince Hse"
+                summary="Brother man, how have you been??"
+              />
+            );
+          })}
+        </View>
+      </ScrollView>
+      <FAB />
+    </SafeAreaView>
   );
 }
 
-export const s = StyleSheet.create({
+const s = StyleSheet.create({
+  _: {},
   container: {
-    backgroundColor: themeColor,
+    backgroundColor: COLOR.background,
+    paddingHorizontal: 16,
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
-  button: {
-    backgroundColor: "#fff",
-    borderRadius: 12,
-    paddingHorizontal: 22,
+  header: {
+    rowGap: 16,
     paddingVertical: 16,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    columnGap: 8,
   },
-  button_text: {
-    color: themeColor,
-    fontSize: 18,
-    fontWeight: "600",
+  main: {
+    rowGap: 24,
   },
 });
