@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Pressable, View, Text, Image } from "react-native";
 import { CheckIcon, Trash2Icon } from "lucide-react-native";
 import { StringHelper } from "@/utils/helpers/common/string.helper";
@@ -7,27 +7,26 @@ import { COLOR } from "@/constants/THEME";
 import ConfirmDelete from "../ConfirmDelete";
 import { listItemStyles as s } from "./styles";
 import { PostEntity } from "../../core/post.interface";
+import { UserEntity } from "@/features/user/core/user.interface";
+import { useListItem } from "./useListItem";
 
 interface IProps {
-  data: PostEntity;
+  data: UserEntity;
 }
 
 const defaultAvatar = require("@/assets/images/avatar.png");
 
 const ListItem: React.FC<IProps> = ({ data }) => {
-  const [isCompleted, setIsCompleted] = useState(false);
-  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
-  const [toBeDeleted, setToBeDeleted] = useState(-1);
-  const toggleIsCompleted = () => setIsCompleted((prev) => !prev);
-  const toggleConfirmDelete = () => setShowConfirmDelete((prev) => !prev);
-  const handleDeleteIntent = (id: number) => {
-    setToBeDeleted(419);
-    setShowConfirmDelete(true);
-  };
-  const handleDelete = () => {
-    console.log("🚀 ~ toBeDeleted:", toBeDeleted);
-    setShowConfirmDelete(false);
-  };
+  const title = data.username;
+  const summary = StringHelper.truncate(data?.company?.catchPhrase, 36);
+  const {
+    isCompleted,
+    toggleIsCompleted,
+    showConfirmDelete,
+    toggleConfirmDelete,
+    handleDeleteIntent,
+    handleDelete,
+  } = useListItem();
   console.log("🚀 ~ ListItem");
   // renders
   return (
@@ -43,13 +42,14 @@ const ListItem: React.FC<IProps> = ({ data }) => {
             )}
           </View>
           <View style={s.static.figcaption}>
-            <Text style={s.static.title}>{data.title}</Text>
-            <Text style={s.static.article}>
-              {StringHelper.truncate(data.body, 36)}
-            </Text>
+            <Text style={s.static.title}>{title}</Text>
+            <Text style={s.static.article}>{summary}</Text>
           </View>
         </Pressable>
-        <Pressable style={s.static.icon} onPress={() => handleDeleteIntent(data.id)}>
+        <Pressable
+          style={s.static.icon}
+          onPress={() => handleDeleteIntent(data.id)}
+        >
           <Trash2Icon size={16} color={COLOR.error} />
         </Pressable>
       </View>

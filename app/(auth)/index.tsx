@@ -11,25 +11,24 @@ import {
   ListItem,
 } from "@/features/post";
 import { router } from "expo-router";
-import { postResource } from "@/features/post/core/post.resource";
+import { userResource } from "@/features/user/core/user.resource";
 
 export default function PostsScreen() {
+  const data = userResource.getPosts.data;
   console.log("🚀 ~ PostsScreen");
   return (
     <SafeAreaView style={s.container}>
       <View style={s.header}>
         <AppBar />
         <SearchBar handleSearch={(value) => console.log(value)} />
-        <Ribbon total={16} />
+        <Ribbon total={data.length} />
       </View>
-      <ScrollView>
-        <FlatList
-          data={postResource.getPosts.data}
-          keyExtractor={(item) => String(item.id)}
-          renderItem={({ item }) => <ListItem data={item} />}
-          contentContainerStyle={s.main}
-        />
-      </ScrollView>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => <ListItem data={item} />}
+        contentContainerStyle={s.main}
+      />
       <FAB action={() => router.push("/create")} />
     </SafeAreaView>
   );
@@ -47,9 +46,6 @@ const s = StyleSheet.create({
     paddingHorizontal: 16,
   },
   main: {
-    // rowGap: 24,
-    // marginHorizontal: 16,
-    // paddingBottom: 16,
-    // rowGap: 16,
+    paddingBottom: 24,
   },
 });
