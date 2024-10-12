@@ -27,8 +27,8 @@ const AppBar = () => {
           style={s.image}
         />
         <View style={s.figcaption}>
-          <Text style={s.title}>Hello,</Text>
-          <Text style={s.subtitle}>Sterling</Text>
+          <Text style={s.title}>Welcome back,</Text>
+          <Text style={s.subtitle}>Emmanuel</Text>
         </View>
       </View>
       <Pressable style={s.notification}>

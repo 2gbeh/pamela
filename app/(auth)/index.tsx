@@ -1,5 +1,6 @@
 import { FlatList, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { router } from "expo-router";
 import { COLOR } from "@/constants/THEME";
 
 import {
@@ -10,7 +11,6 @@ import {
   FormSheet,
   ListItem,
 } from "@/features/post";
-import { router } from "expo-router";
 import { userResource } from "@/features/user/core/user.resource";
 
 export default function PostsScreen() {

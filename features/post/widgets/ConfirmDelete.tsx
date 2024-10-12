@@ -5,11 +5,13 @@ import { COLOR, FONT } from "@/constants/THEME";
 import ModalWrapper from "./ModalWrapper";
 import ControlledCheckbox from "./ControlledCheckbox";
 import Hyperlink from "./Hyperlink";
+import Spinner from "./Spinner";
 
 interface IProps extends PropsWithChildren {
   open?: boolean;
   onClose?: () => void;
   onConfirm?: () => void;
+  isDeleting?: boolean;
 }
 
 const ConfirmDelete: React.FC<IProps> = ({
@@ -17,6 +19,7 @@ const ConfirmDelete: React.FC<IProps> = ({
   open,
   onClose = () => undefined,
   onConfirm = () => undefined,
+  isDeleting,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
   console.log("🚀 ~ ConfirmDelete");
@@ -25,19 +28,27 @@ const ConfirmDelete: React.FC<IProps> = ({
     <ModalWrapper open={open} onClose={onClose}>
       <View style={s.container}>
         <Text style={s.heading}>Delete this task?</Text>
-        <Pressable
-          style={s.article}
-          onPress={() => setIsChecked((prev) => !prev)}
-        >
-          <ControlledCheckbox isChecked={isChecked} />
-          <View style={{ flexDirection: "column" }}>
-            <Text style={s.p}>Also delete sub tasks within this project</Text>
-            <Text style={s.p}>folder on device</Text>
-          </View>
-        </Pressable>
+        {children || (
+          <Pressable
+            style={s.article}
+            onPress={() => setIsChecked((prev) => !prev)}
+          >
+            <>
+              <ControlledCheckbox isChecked={isChecked} />
+              <View style={{ flexDirection: "column" }}>
+                <Text style={s.p}>
+                  Also delete sub tasks within this project
+                </Text>
+                <Text style={s.p}>folder on device</Text>
+              </View>
+            </>
+          </Pressable>
+        )}
         <View style={s.footer}>
           <Hyperlink label="Cancel" action={onClose} />
-          <Hyperlink label="OK" action={onConfirm} />
+          <Spinner pending={isDeleting} as="primary">
+            <Hyperlink label="OK" action={onConfirm} />
+          </Spinner>
         </View>
       </View>
     </ModalWrapper>

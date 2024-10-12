@@ -17,21 +17,25 @@ interface IProps {
 const defaultAvatar = require("@/assets/images/avatar.png");
 
 const ListItem: React.FC<IProps> = ({ data }) => {
-  const title = data.username;
   const summary = StringHelper.truncate(data?.company?.catchPhrase, 36);
   const {
     isCompleted,
     toggleIsCompleted,
+    toBeDeleted,
     showConfirmDelete,
     toggleConfirmDelete,
     handleDeleteIntent,
+    cancelDeleteIntent,
     handleDelete,
+    isDeleting,
   } = useListItem();
   console.log("🚀 ~ ListItem");
   // renders
   return (
     <>
-      <View style={s.container(isCompleted).transform}>
+      <View
+        style={s.container(isCompleted || data.id == toBeDeleted).transform}
+      >
         <Pressable style={s.static.wrapper} onPress={toggleIsCompleted}>
           <View style={s.static.figure}>
             <Image source={defaultAvatar} alt="" style={s.static.image} />
@@ -42,7 +46,7 @@ const ListItem: React.FC<IProps> = ({ data }) => {
             )}
           </View>
           <View style={s.static.figcaption}>
-            <Text style={s.static.title}>{title}</Text>
+            <Text style={s.static.title}>{data.username}</Text>
             <Text style={s.static.article}>{summary}</Text>
           </View>
         </Pressable>
@@ -57,8 +61,9 @@ const ListItem: React.FC<IProps> = ({ data }) => {
       {/* MODAL */}
       <ConfirmDelete
         open={showConfirmDelete}
-        onClose={toggleConfirmDelete}
+        onClose={cancelDeleteIntent}
         onConfirm={handleDelete}
+        isDeleting={isDeleting}
       />
     </>
   );

@@ -16,4 +16,5 @@ export { default as Hyperlink } from "./widgets/Hyperlink";
 export { default as ListItem } from "./widgets/ListItem";
 export { default as ModalWrapper } from "./widgets/ModalWrapper";
 export { default as SearchBar } from "./widgets/SearchBar";
+export { default as Spinner } from "./widgets/Spinner";
 export { default as Tent } from "./widgets/Tent";
