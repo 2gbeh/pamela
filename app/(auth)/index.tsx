@@ -42,14 +42,14 @@ const s = StyleSheet.create({
   _: {},
   container: {
     backgroundColor: COLOR.background,
-    paddingHorizontal: 16,
     flex: 1,
   },
   header: {
     rowGap: 16,
     paddingVertical: 16,
+    paddingHorizontal: 16,
   },
   main: {
-    rowGap: 24,
+    // rowGap: 24,
   },
 });

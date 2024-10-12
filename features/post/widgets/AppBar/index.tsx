@@ -15,7 +15,6 @@ const AppBar = () => {
     <View style={s.container}>
       <View style={s.figure}>
         <Image
-          style={s.image}
           source={
             isConnected
               ? "https://github.com/2gbeh.png"
@@ -25,6 +24,7 @@ const AppBar = () => {
           contentFit="cover"
           transition={100}
           priority="high"
+          style={s.image}
         />
         <View style={s.figcaption}>
           <Text style={s.title}>Hello,</Text>
