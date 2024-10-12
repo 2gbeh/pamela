@@ -1,4 +1,4 @@
-import Tent from "@/components/Tent";
+import Tent from "@/features/post/widgets/Tent";
 
 export default function NotFoundScreen() {
   console.log("🚀 ~ NotFoundScreen");

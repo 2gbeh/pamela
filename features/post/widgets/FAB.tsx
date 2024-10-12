@@ -4,10 +4,11 @@ import { router, usePathname } from "expo-router";
 import { PlusIcon } from "lucide-react-native";
 import { COLOR } from "@/constants/THEME";
 
-const FAB = () => {
-  const action = () => {
-    router.push("/create");
-  };
+interface IProps {
+  action?: () => void;
+}
+
+const FAB: React.FC<IProps> = ({ action = () => undefined }) => {
   console.log("🚀 ~ FAB");
   // renders
   return (

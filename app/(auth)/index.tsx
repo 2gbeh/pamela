@@ -6,10 +6,11 @@ import {
   AppBar,
   SearchBar,
   FAB,
-  Filters,
+  Ribbon,
   FormSheet,
   ListItem,
 } from "@/features/post";
+import { router } from "expo-router";
 
 export default function PostsScreen() {
   console.log("🚀 ~ PostsScreen");
@@ -18,7 +19,7 @@ export default function PostsScreen() {
       <View style={s.header}>
         <AppBar />
         <SearchBar handleSearch={(value) => console.log(value)} />
-        <Filters total={16} />
+        <Ribbon total={16} />
       </View>
       <ScrollView>
         <View style={s.main}>
@@ -33,7 +34,7 @@ export default function PostsScreen() {
           })}
         </View>
       </ScrollView>
-      <FAB />
+      <FAB action={() => router.push("/create")} />
     </SafeAreaView>
   );
 }

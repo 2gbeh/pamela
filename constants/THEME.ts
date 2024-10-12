@@ -36,7 +36,7 @@ export const COLOR = {
   border: "#ccc",
   bubble: "#134d37",
   bubble_dark: "#134333",
-  surface: "#1f2c34",
+  surface: "#293237",
   error: "#ff5722",
   info: "#2571ff",
   avatar: "#6a7175",

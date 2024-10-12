@@ -7,8 +7,8 @@ interface IProps {
   total: number;
 }
 
-const Filters: React.FC<IProps> = ({ total }) => {
-  console.log("🚀 ~ Filters");
+const Ribbon: React.FC<IProps> = ({ total }) => {
+  console.log("🚀 ~ Ribbon");
   // renders
   return (
     <Pressable style={s.container}>
@@ -21,7 +21,7 @@ const Filters: React.FC<IProps> = ({ total }) => {
   );
 };
 
-export default React.memo(Filters);
+export default React.memo(Ribbon);
 
 const s = StyleSheet.create({
   _: {},

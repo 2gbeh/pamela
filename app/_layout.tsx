@@ -16,7 +16,10 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <ReduxProvider store={store}>
         <RootSiblingParent>
-          <Stack screenOptions={{ headerShown: false }} />
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="(auth)" />
+            <Stack.Screen name="+not-found" />
+          </Stack>
         </RootSiblingParent>
       </ReduxProvider>
       <StatusBar style="light" />

@@ -5,8 +5,14 @@ export { postQueryService } from "./core/postQuery.service";
 export { postMutationService } from "./core/postMutation.service";
 //
 export { default as AppBar } from "./widgets/AppBar";
+export { default as BottomSheetWrapper } from "./widgets/BottomSheetWrapper";
+export { default as Checkbox } from "./widgets/Checkbox";
+export { default as ConfirmDelete } from "./widgets/ConfirmDelete";
 export { default as FAB } from "./widgets/FAB";
-export { default as Filters } from "./widgets/Filters";
+export { default as Ribbon } from "./widgets/Ribbon";
 export { default as FormSheet } from "./widgets/FormSheet";
+export { default as Hyperlink } from "./widgets/Hyperlink";
 export { default as ListItem } from "./widgets/ListItem";
+export { default as ModalWrapper } from "./widgets/ModalWrapper";
 export { default as SearchBar } from "./widgets/SearchBar";
+export { default as Tent } from "./widgets/Tent";
