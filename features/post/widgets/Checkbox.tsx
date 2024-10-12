@@ -21,7 +21,7 @@ const Checkbox: React.FC<IProps> = ({
   // renders
   return isChecked ? (
     <Pressable style={[s.box, s.checked]} onPress={toggleChecked}>
-      <CheckIcon color={COLOR.background} size={22} strokeWidth={3} />
+      <CheckIcon color={COLOR.background} size={16} strokeWidth={3} />
     </Pressable>
   ) : (
     <Pressable style={[s.box, s.unchecked]} onPress={toggleChecked}></Pressable>
@@ -34,9 +34,9 @@ const s = StyleSheet.create({
   _: {},
   box: {
     borderWidth: 2,
-    borderRadius: 4,
-    width: 20,
-    height: 20,
+    borderRadius: 2,
+    width: 18,
+    height: 18,
   },
   checked: {
     backgroundColor: COLOR.primary,

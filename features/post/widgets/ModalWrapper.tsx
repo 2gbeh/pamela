@@ -50,7 +50,7 @@ export default React.memo(ModalWrapper);
 
 const s = StyleSheet.create({
   overlay: {
-    backgroundColor: COLOR.opacity.point40,
+    backgroundColor: COLOR.opacity.point50,
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -74,6 +74,7 @@ const s = StyleSheet.create({
     fontSize: 22,
   },
   content: {
-    padding: 24,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
   },
 });

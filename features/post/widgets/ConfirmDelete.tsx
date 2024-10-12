@@ -26,9 +26,10 @@ const ConfirmDelete: React.FC<IProps> = ({
         <Text style={s.heading}>Delete this task?</Text>
         <View style={s.article}>
           <Checkbox />
-          <Text style={s.p}>
-            Also delete media received in this chat from the device gallery
-          </Text>
+          <View style={{ flexDirection: "column" }}>
+            <Text style={s.p}>Also delete sub tasks within this project</Text>
+            <Text style={s.p}>folder on device</Text>
+          </View>
         </View>
         <View style={s.footer}>
           <Hyperlink label="Cancel" action={onClose} />
@@ -45,16 +46,19 @@ const s = StyleSheet.create({
   _: {},
   container: {
     // paddingHorizontal: 8,
+    paddingTop: 8,
+    minHeight: 160,
     rowGap: 16,
   },
   heading: {
     color: COLOR.text,
-    fontFamily: FONT.RobotoMedium,
-    fontSize: 20,
+    fontFamily: FONT.RobotoRegular,
+    fontSize: 24,
   },
   article: {
     flexDirection: "row",
     alignItems: "center",
+    paddingRight: 8,
     columnGap: 16,
   },
   p: {
@@ -68,5 +72,8 @@ const s = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-end",
     columnGap: 24,
+    position: "absolute",
+    bottom: 16,
+    alignSelf: "flex-end",
   },
 });

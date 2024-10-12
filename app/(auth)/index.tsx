@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import { FlatList, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { COLOR } from "@/constants/THEME";
 
@@ -11,6 +11,7 @@ import {
   ListItem,
 } from "@/features/post";
 import { router } from "expo-router";
+import { postResource } from "@/features/post/core/post.resource";
 
 export default function PostsScreen() {
   console.log("🚀 ~ PostsScreen");
@@ -22,17 +23,12 @@ export default function PostsScreen() {
         <Ribbon total={16} />
       </View>
       <ScrollView>
-        <View style={s.main}>
-          {Array.from({ length: 10 }).map((_, i) => {
-            return (
-              <ListItem
-                key={i}
-                title="Prince Hse"
-                summary="WhatsApp Dark Mode Color Palette: WhatsApp"
-              />
-            );
-          })}
-        </View>
+        <FlatList
+          data={postResource.getPosts.data}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }) => <ListItem data={item} />}
+          contentContainerStyle={s.main}
+        />
       </ScrollView>
       <FAB action={() => router.push("/create")} />
     </SafeAreaView>
@@ -52,5 +48,8 @@ const s = StyleSheet.create({
   },
   main: {
     // rowGap: 24,
+    // marginHorizontal: 16,
+    // paddingBottom: 16,
+    // rowGap: 16,
   },
 });

@@ -6,15 +6,15 @@ import { COLOR } from "@/constants/THEME";
 //
 import ConfirmDelete from "../ConfirmDelete";
 import { listItemStyles as s } from "./styles";
+import { PostEntity } from "../../core/post.interface";
 
 interface IProps {
-  title: string;
-  summary: string;
+  data: PostEntity;
 }
 
 const defaultAvatar = require("@/assets/images/avatar.png");
 
-const ListItem: React.FC<IProps> = ({ title, summary }) => {
+const ListItem: React.FC<IProps> = ({ data }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [toBeDeleted, setToBeDeleted] = useState(-1);
@@ -26,7 +26,7 @@ const ListItem: React.FC<IProps> = ({ title, summary }) => {
   };
   const handleDelete = () => {
     console.log("🚀 ~ toBeDeleted:", toBeDeleted);
-    // setShowConfirmDelete(false);
+    setShowConfirmDelete(false);
   };
   console.log("🚀 ~ ListItem");
   // renders
@@ -43,13 +43,13 @@ const ListItem: React.FC<IProps> = ({ title, summary }) => {
             )}
           </View>
           <View style={s.static.figcaption}>
-            <Text style={s.static.title}>{title}</Text>
+            <Text style={s.static.title}>{data.title}</Text>
             <Text style={s.static.article}>
-              {StringHelper.truncate(summary, 36)}
+              {StringHelper.truncate(data.body, 36)}
             </Text>
           </View>
         </Pressable>
-        <Pressable style={s.static.icon} onPress={() => handleDeleteIntent(1)}>
+        <Pressable style={s.static.icon} onPress={() => handleDeleteIntent(data.id)}>
           <Trash2Icon size={16} color={COLOR.error} />
         </Pressable>
       </View>
