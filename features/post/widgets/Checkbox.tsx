@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { StyleSheet, Pressable, View } from "react-native";
+import { StyleSheet, Pressable } from "react-native";
 import { CheckIcon } from "lucide-react-native";
-import { COLOR, FONT } from "@/constants/THEME";
+import { COLOR } from "@/constants/THEME";
 
 interface IProps {
   defaultChecked?: boolean;

@@ -8,6 +8,7 @@ export { default as AppBar } from "./widgets/AppBar";
 export { default as BottomSheetWrapper } from "./widgets/BottomSheetWrapper";
 export { default as Checkbox } from "./widgets/Checkbox";
 export { default as ConfirmDelete } from "./widgets/ConfirmDelete";
+export { default as ControlledCheckbox } from "./widgets/ControlledCheckbox";
 export { default as FAB } from "./widgets/FAB";
 export { default as Ribbon } from "./widgets/Ribbon";
 export { default as FormSheet } from "./widgets/FormSheet";

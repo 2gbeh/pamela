@@ -1,9 +1,9 @@
 import React, { PropsWithChildren, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { COLOR, FONT } from "@/constants/THEME";
 //
 import ModalWrapper from "./ModalWrapper";
-import Checkbox from "./Checkbox";
+import ControlledCheckbox from "./ControlledCheckbox";
 import Hyperlink from "./Hyperlink";
 
 interface IProps extends PropsWithChildren {
@@ -18,19 +18,23 @@ const ConfirmDelete: React.FC<IProps> = ({
   onClose = () => undefined,
   onConfirm = () => undefined,
 }) => {
+  const [isChecked, setIsChecked] = useState(false);
   console.log("🚀 ~ ConfirmDelete");
   // renders
   return (
     <ModalWrapper open={open} onClose={onClose}>
       <View style={s.container}>
         <Text style={s.heading}>Delete this task?</Text>
-        <View style={s.article}>
-          <Checkbox />
+        <Pressable
+          style={s.article}
+          onPress={() => setIsChecked((prev) => !prev)}
+        >
+          <ControlledCheckbox isChecked={isChecked} />
           <View style={{ flexDirection: "column" }}>
             <Text style={s.p}>Also delete sub tasks within this project</Text>
             <Text style={s.p}>folder on device</Text>
           </View>
-        </View>
+        </Pressable>
         <View style={s.footer}>
           <Hyperlink label="Cancel" action={onClose} />
           <Hyperlink label="OK" action={onConfirm} />
