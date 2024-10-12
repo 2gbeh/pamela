@@ -21,9 +21,9 @@ export class StringHelper {
     return start + masked + end;
   };
 
-  static truncate = (str: unknown, len = 160) => {
+  static truncate = (str: unknown, len = 160): string => {
     let x = str as string;
-    return x.length > len ? x.slice(0, len - 3) + "..." : str;
+    return x.length > len ? x.slice(0, len - 3) + "..." : (str as string);
   };
 
   static slug = (str: unknown) => {

@@ -32,14 +32,13 @@ export const COLOR = {
   text_muted: "#8e9494",
   icon: "#8e9494",
   input: "#1f2c34",
+  input_focus: "#1e2831",
   border: "#ccc",
-  bubble_left: "#1f2c34",
-  bubble_left_dark: "#1e2831",
-  bubble_right: "#134d37",
-  bubble_right_dark: "#134333",
-  indicator: "#4caf50",
+  bubble: "#134d37",
+  bubble_dark: "#134333",
   surface: "#1f2c34",
   error: "#ff5722",
+  info: "#2571ff",
   avatar: "#6a7175",
   // https://rgbacolorpicker.com/rgba-to-hex
   opacity: {

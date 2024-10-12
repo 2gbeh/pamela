@@ -1,4 +1,3 @@
-import "react-native-gesture-handler";
 import "react-native-reanimated";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";

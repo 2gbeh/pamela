@@ -17,7 +17,7 @@ export default function PostsScreen() {
     <SafeAreaView style={s.container}>
       <View style={s.header}>
         <AppBar />
-        <SearchBar />
+        <SearchBar handleSearch={(value) => console.log(value)} />
         <Filters total={16} />
       </View>
       <ScrollView>
@@ -27,7 +27,7 @@ export default function PostsScreen() {
               <ListItem
                 key={i}
                 title="Prince Hse"
-                summary="Brother man, how have you been??"
+                summary="WhatsApp Dark Mode Color Palette: WhatsApp"
               />
             );
           })}
